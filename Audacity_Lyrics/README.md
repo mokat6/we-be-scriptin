@@ -59,8 +59,11 @@ eyeD3 KanyeWest.mp3
 
 # Players
 ## Foobar2000
-extension OpenLyrics  
-preferences, saving, save to tag -> saves to USLT  
-make storage dir same as mp3 file. then finds .lrc in dir
+setup:  
+install extension OpenLyrics  
+View > OpenLyrics Panel > Right click, Preferences >  
+  - Display, increase Font 20pt
+  - Saving, save to tag -> saves to USLT  
+  - Search sources > Local Files > Storage dir: Same dir as the track (then it can find .lrc in dir)
 
 
