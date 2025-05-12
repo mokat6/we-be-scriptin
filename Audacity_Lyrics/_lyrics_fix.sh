@@ -8,7 +8,16 @@
 
 shopt -s globstar nullglob
 
-for filepath in **/_*.mp3; do
+# Collect all matching files
+files=(**/_*.mp3)
+
+# If no matching files, exit early
+if [ ${#files[@]} -eq 0 ]; then
+    echo "No files with leading underscore (_) found."
+    exit 0
+fi
+
+for filepath in "${files[@]}"; do
     echo "Processing: $filepath"
 
     # Extract the lyrics text from the second line after the TXXX frame
@@ -28,7 +37,7 @@ for filepath in **/_*.mp3; do
     eyeD3 --remove-frame "TXXX" "$filepath" > /dev/null 2>&1
 
     # Embed the lyrics into USLT frame
-    eyeD3 --add-lyrics=<(echo "$fixed_lyrics"):"Lyrics:eng" "$filepath"
+    eyeD3 --add-lyrics=<(echo "$fixed_lyrics"):"Lyrics:eng" "$filepath" > /dev/null 2>&1
 
     # Rename the file to remove the leading underscore
     dir=$(dirname "$filepath")
