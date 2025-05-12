@@ -1,4 +1,15 @@
+# Flow
 
+In Audacity, when exporting, name with suffix  "_" E.g. `_fly away.mp3`  
+Metadata, add field named "Lyrics" and add lyrics there.  
+For line breaks use `\n`  
+The script does:
+- Removes the _ suffix (marks the file as fixed)
+- Fixes line breaks, from \n to actual new line
+- Changes ID3 tag. Removes TXXX, adds USLT
+
+
+# Lore
 Mp3 files have ID3 tags (metadata containers). These are predetermined.  
 Each ID3 tag has an ID and label. 
 
