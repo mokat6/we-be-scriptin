@@ -1,3 +1,27 @@
+# Edit, new info
+Or just use .ogg, it is more modern, better quality, smaller file sizes, open source format.  
+Metadata in .ogg - in Vorbis Comments (simple key=value pairs)  
+Metadata in .mp3 - ID3v1/ID3v2 (USLT, TXXX, etc.)	
+
+Audacity - better at using the tag, but still no \n line breaks, and so needs script fixing
+
+For .ogg in Audacity metadata window add Field "LYRICS" (works with small case, but should be ALL CAPS)
+Sometimes the tag can be UNSYNCED LYRICS, so that more compatible with mp3 ID3 tags. 
+
+mp3 better for compatibility... ??? whatever that means, really?
+
+work with ogg on Linux
+ ```shell
+sudo apt install vorbis-tools
+ vorbiscomment -l mySong.ogg
+vorbiscomment -w -t "LYRICS=These are the song lyrics." mySong.ogg
+```
+(mp3 patents expired in 2017 so no problems there anymore)  
+
+
+
+
+
 # Flow
 
 In Audacity, when exporting, name with suffix  "_" E.g. `_fly away.mp3`  
