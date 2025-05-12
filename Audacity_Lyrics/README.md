@@ -8,6 +8,8 @@ The script does:
 - Fixes line breaks, from \n to actual new line
 - Changes ID3 tag. Removes TXXX, adds USLT
 
+Keep the _lyrics_fix.sh in the same folder where you save mp3s. Run it when you want to fix mp3 files. It opearates on all files with suffix `_` in this dir, and subfolders recursively.
+
 
 # Lore
 Mp3 files have ID3 tags (metadata containers). These are predetermined.  
