@@ -33,6 +33,7 @@ USLT Unsynchronized lyrics - is what you want for lyrics!!
 
 Audacity has TPE1(Artist), and TIT2(Title), etc  
 but my custom "Lyrics" isn't saved in USLT, it is saved in TXXX(UserTextFrame: [Description: Lyrics])  
+It's like Audacity hack. It doesn't really work with USLT. So just uses this whatever other container and Description - whatever you say.  
 some players catch it, because "lyrics" is in the name there....  
 but they first check USLT, the standard lyrics metadata container.
 <br /><br /><br />
