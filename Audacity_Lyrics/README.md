@@ -84,7 +84,9 @@ eyeD3 KanyeWest.mp3
 # Players
 ## Foobar2000
 setup:  
-install extension OpenLyrics  
+install extension OpenLyrics fork, with lyrics navigation
+https://github.com/mokat6/foo_openlyrics_w_lyrics_navigation 
+
 View > OpenLyrics Panel > Right click, Preferences >  
   - Display, increase Font 20pt
   - Saving, save to tag -> saves to USLT  
