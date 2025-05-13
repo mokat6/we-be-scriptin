@@ -40,9 +40,17 @@ with open(input_file, encoding="utf-8") as f:
 lrc_data = srt_to_lrc(srt_data)
 
 # Step 3: Pipe into Node.js script
+
+    # Get the directory of this Python script
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
+    # Absolute path to _trasim.js
+trasim_path = os.path.join(script_dir, "_trasim.js")
+
+
 try:
     result = subprocess.run(
-        ["node", "_trasim.js"],
+        ["node", trasim_path],
         input=lrc_data,
         capture_output=True,
         text=True,

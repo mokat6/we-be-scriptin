@@ -16,7 +16,8 @@ whisper "$INPUT_FILE" \
   --output_dir ./ \
   --model medium \
   --fp16 False \
-  --initial_prompt "用粵語嘅方式，嘅，呢啲，邊度，等。唔好用普通話嘅字 譬如 什么，他，等。"
+  --language zh \
+  --initial_prompt "用粵語嘅方式，乜嘢, 嘅，呢啲，邊度，等。唔好用普通話嘅字 譬如 什么，他，这"
 
 
 ###############################################
@@ -24,9 +25,13 @@ whisper "$INPUT_FILE" \
 #### Next step, run convert from _2convert.py
 
 
-# Get the base name without extension
+# app path, path to python script to convert 
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+CONVERT_SCRIPT="$SCRIPT_DIR/_2convert.py"
+
+# music.mp3 to music.srt
 BASE_NAME=$(basename "$INPUT_FILE" .mp3)
 SRT_NAME="${BASE_NAME}.srt"
 
 # Run the Python conversion script
-python3 _2convert.py "$SRT_NAME"
+python3 "$CONVERT_SCRIPT" "$SRT_NAME"
