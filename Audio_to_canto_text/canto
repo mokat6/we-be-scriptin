@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Check if user passed an argument
+if [ -z "$1" ]; then
+  echo "Usage: canto input.mp3"
+  exit 1
+fi
+
+# Use the argument as the input filename
+INPUT_FILE="$1"
+
+# Run whisper with the provided file
+whisper "$INPUT_FILE" \
+  --task transcribe \
+  --output_format srt \
+  --output_dir ./ \
+  --model medium \
+  --fp16 False \
+  --initial_prompt "用粵語嘅方式，嘅，呢啲，邊度，等。唔好用普通話嘅字 譬如 什么，他，等。"
+
+
+###############################################
+###############################################
+#### Next step, run convert from _2convert.py
+
+
+# Get the base name without extension
+BASE_NAME=$(basename "$INPUT_FILE" .mp3)
+SRT_NAME="${BASE_NAME}.srt"
+
+# Run the Python conversion script
+python3 _2convert.py "$SRT_NAME"
