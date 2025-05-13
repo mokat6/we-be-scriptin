@@ -2,7 +2,10 @@
 
 Transcribes mp3. Audio to text in .srt and .lrc formats.  
 Preconfigured for Cantonese with simplified characters.  
-Use the lrc file in Foobar2000 with openLyrics-w-lyric-navigation extension
+
+# How do you use the .lrc?
+Use the lrc file in Foobar2000 with openLyrics-w-lyric-navigation extension  
+https://github.com/mokat6/foo_openlyrics_w_lyrics_navigation
 
 # Environment
 
