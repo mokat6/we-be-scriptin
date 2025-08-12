@@ -19,7 +19,7 @@ Why? .opus files are very hard to change metadata. ffmpeg and other tools fail. 
 ffmpeg -version | head -n 1 ; opustags -h | head -n 1
 
 chmod +x setgenre
-sudo mv setgenre ~/.local/bin/setgenre
+cp setgenre ~/.local/bin/setgenre
 ```
 
 # Usage

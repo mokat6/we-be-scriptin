@@ -21,7 +21,7 @@ Dependencies:
 ```bash
 sudo apt install yt-dlp ffmpeg
 chmod +x getmp3
-sudo mv getmp3 ~/.local/bin/getmp3
+cp getmp3 ~/.local/bin/getmp3
 ```
 
 ---
