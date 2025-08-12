@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GetMP3 Command Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        background: #f4f4f4;
+      }
+      h2 {
+        text-align: center;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 4px;
+        box-sizing: border-box;
+      }
+      button {
+        margin-top: 15px;
+        padding: 10px;
+        width: 100%;
+        background: #4caf50;
+        color: white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #45a049;
+      }
+      #output {
+        margin-top: 15px;
+        background: #fff;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      /* Toast styles */
+      #toast {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 10px;
+        position: fixed;
+        left: 50%;
+        bottom: 30px;
+        font-size: 14px;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.5s, bottom 0.5s;
+      }
+      #toast.show {
+        visibility: visible;
+        opacity: 1;
+        bottom: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>GetMP3 Command Generator</h2>
+
+    <form id="cmdForm" onsubmit="return false;">
+      <label for="url">YouTube URL (required):</label>
+      <input type="text" id="url" required />
+
+      <label for="artist">Artist (optional):</label>
+      <input type="text" id="artist" />
+
+      <label for="title">Title (optional):</label>
+      <input type="text" id="title" />
+
+      <label for="year">Year (optional):</label>
+      <input type="text" id="year" />
+
+      <label for="genre">Genre (optional):</label>
+      <select id="genre">
+        <option value="">-- Select genre --</option>
+        <option value="Canto">Canto</option>
+        <option value="chill">chill</option>
+        <option value="Dance">Dance</option>
+        <option value="Game">Game</option>
+        <option value="JP">JP</option>
+        <option value="KR">KR</option>
+        <option value="LoFi">LoFi</option>
+        <option value="Mando">Mando</option>
+        <option value="playlists">playlists</option>
+        <option value="pop">pop</option>
+        <option value="Thug Life">Thug Life</option>
+      </select>
+
+      <label for="outputDir">Output Directory:</label>
+      <input type="text" id="outputDir" value="./" />
+
+      <button type="button" onclick="generateCommand()">Generate Command</button>
+    </form>
+
+    <div id="output"></div>
+    <div id="toast">Command copied to clipboard!</div>
+
+    <script>
+      const basePath = "/mnt/c/Users/SweetPotato/Music/";
+
+      // Update outputDir when genre changes
+      document.getElementById("genre").addEventListener("change", function () {
+        const genre = this.value;
+        if (genre) {
+          document.getElementById("outputDir").value = basePath + genre;
+        } else {
+          document.getElementById("outputDir").value = "./";
+        }
+      });
+
+      function showToast(message) {
+        let toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.className = "show";
+        setTimeout(() => {
+          toast.className = toast.className.replace("show", "");
+        }, 2000);
+      }
+
+      function generateCommand() {
+        let url = document.getElementById("url").value.trim();
+        let artist = document.getElementById("artist").value.trim();
+        let title = document.getElementById("title").value.trim();
+        let year = document.getElementById("year").value.trim();
+        let genre = document.getElementById("genre").value.trim();
+        let outputDir = document.getElementById("outputDir").value.trim();
+
+        if (!url) {
+          showToast("YouTube URL is required!");
+          return;
+        }
+
+        // Start with base command and required --url flag
+        let parts = [`--url "${url}"`];
+
+        // Conditionally add other flags if non-empty
+        if (artist) parts.push(`--artist "${artist}"`);
+        if (title) parts.push(`--title "${title}"`);
+        if (year) parts.push(`--year "${year}"`);
+        if (genre) parts.push(`--genre "${genre}"`);
+
+        if (outputDir && outputDir !== "./") {
+          parts.push(`--output-dir "${outputDir}"`);
+        }
+
+        let cmd = `getmp3 ${parts.join(" ")}`;
+        document.getElementById("output").innerHTML = `<strong>Command:</strong><br><code>${cmd}</code>`;
+
+        navigator.clipboard.writeText(cmd).then(() => {
+          showToast("Command copied to clipboard!");
+        });
+      }
+    </script>
+  </body>
+</html>

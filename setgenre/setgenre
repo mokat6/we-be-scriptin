@@ -1,0 +1,68 @@
+#!/bin/bash
+
+# Usage check
+if [ -z "$1" ]; then
+  echo "Usage: $0 <genre>"
+  echo "Example: $0 Chillout"
+  exit 1
+fi
+
+GENRE="$1"
+
+# Check if ffmpeg is installed
+if ! command -v ffmpeg >/dev/null 2>&1; then
+  echo "ffmpeg command not found. Please install ffmpeg."
+  exit 1
+fi
+
+# Check if opustags is installed (only needed for .opus files)
+if ! command -v opustags >/dev/null 2>&1; then
+  echo "Warning: opustags command not found. .opus files won't be tagged correctly."
+fi
+
+# List of audio extensions you want to support (lowercase)
+EXTENSIONS=("mp3" "opus" "webm" "aac" "m4a" "wav" "flac" "ogg")
+
+# Enable nullglob so that globs with no matches return empty array
+shopt -s nullglob
+
+# Collect all files matching the extensions
+files=()
+for ext in "${EXTENSIONS[@]}"; do
+  for f in *."$ext"; do
+    files+=("$f")
+  done
+done
+
+if [ ${#files[@]} -eq 0 ]; then
+  echo "No audio files found in the current directory."
+  exit 0
+fi
+
+for file in "${files[@]}"; do
+  echo "Setting genre '$GENRE' for file: $file"
+
+  ext="${file##*.}"
+
+  if [[ "$ext" == "opus" ]]; then
+    if command -v opustags >/dev/null 2>&1; then
+      opustags -i -s "GENRE=$GENRE" "$file"
+      if [ $? -ne 0 ]; then
+        echo "Failed to tag $file with opustags"
+      fi
+    else
+      echo "Skipping $file: opustags not installed"
+    fi
+  else
+    tmpfile="${file%.*}_tmp.${ext}"
+    ffmpeg -hide_banner -loglevel error -y -i "$file" -c copy -metadata genre="$GENRE" "$tmpfile"
+    if [ $? -eq 0 ]; then
+      mv -f "$tmpfile" "$file"
+    else
+      echo "Failed to tag $file with ffmpeg"
+      rm -f "$tmpfile"
+    fi
+  fi
+done
+
+echo "All files tagged with genre: $GENRE"
