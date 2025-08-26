@@ -20,14 +20,44 @@ docker run -d \
   moul/icecast
 ```
 
-Play in VLC
-http://ec2-54-145-127-120.compute-1.amazonaws.com:8000/ziplol
-http://ec2-54-145-127-120.compute-1.amazonaws.com:8000/wbls
-http://ec2-54-145-127-120.compute-1.amazonaws.com:8000/98rock
+Play in VLC  
+http://ec2-54-145-127-120.compute-1.amazonaws.com:8000/ziplol  
+http://ec2-54-145-127-120.compute-1.amazonaws.com:8000/wbls  
+http://ec2-54-145-127-120.compute-1.amazonaws.com:8000/98rock  
 
 
 
 Radio sources:
-```bash
 
+Need VPS  
+Audacy network, iHeartRadio network
+
+
+
+
+
+
+
+
+```
+98 Rock - 97.9 baltimore
+https://www.98online.com/
+stream URL:
+http://19813.live.streamtheworld.com/WIYYFMAAC.aac
+US ip only. 
+```
+
+```
+WBLS
+New York - 107.5
+https://www.wbls.com/listen-live/
+http://18093.live.streamtheworld.com/WBLSFMAAC.aac
+US ip only. 
+```
+
+```
+q99.7 Atlanta
+https://player.q997atlanta.com/
+webpage US IP. Stream works...
+http://19813.live.streamtheworld.com/WWWQFMAAC.aac
 ```
