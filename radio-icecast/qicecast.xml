@@ -1,0 +1,51 @@
+<icecast>
+    <limits>
+        <clients>100</clients>
+        <sources>2</sources>
+        <threadpool>5</threadpool>
+        <queue-size>524288</queue-size>
+        <client-timeout>30</client-timeout>
+        <header-timeout>15</header-timeout>
+        <source-timeout>10</source-timeout>
+        <burst-on-connect>1</burst-on-connect>
+        <burst-size>65535</burst-size>
+    </limits>
+
+    <authentication>
+        <source-password>sourcepass</source-password>
+        <relay-password>relaypass</relay-password>
+        <admin-user>admin</admin-user>
+        <admin-password>adminpass</admin-password>
+    </authentication>
+
+    <hostname>localhost</hostname>
+    <listen-socket>
+        <port>8000</port>
+    </listen-socket>
+
+    <relay>
+        <server>stream1.zipfm.lt</server>
+        <port>80</port>
+        <mount>/zipfm128.mp3</mount>
+        <local-mount>/ziplol</local-mount>
+        <on-demand>1</on-demand>
+    </relay>
+
+<relay>
+    <server>18093.live.streamtheworld.com</server>
+    <port>80</port>
+    <mount>/WBLSFMAAC.aac</mount>
+    <local-mount>/wbls</local-mount>
+    <on-demand>1</on-demand>
+</relay>
+
+<relay>
+    <server>19813.live.streamtheworld.com</server>
+    <port>80</port>
+    <mount>/WIYYFMAAC.aac</mount>
+    <local-mount>/98rock</local-mount>
+    <on-demand>1</on-demand>
+</relay>
+
+      <fileserve>1</fileserve>
+</icecast>
