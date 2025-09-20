@@ -1,3 +1,8 @@
+# todo
+add tags  
+- first heard year
+- notes
+
 # About
 
 Tool for downloading mp3 from youtube and adding tags.
