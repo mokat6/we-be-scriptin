@@ -43,7 +43,8 @@ Audacy network, iHeartRadio network
 98 Rock - 97.9 baltimore
 https://www.98online.com/
 stream URL:
-http://19813.live.streamtheworld.com/WIYYFMAAC.aac
+// OLD http://19813.live.streamtheworld.com/WIYYFMAAC.aac
+http://18183.live.streamtheworld.com/WIYYFMAAC.aac
 US ip only. 
 ```
 
@@ -59,5 +60,11 @@ US ip only.
 q99.7 Atlanta
 https://player.q997atlanta.com/
 webpage US IP. Stream works...
-http://19813.live.streamtheworld.com/WWWQFMAAC.aac
+// OLD http://19813.live.streamtheworld.com/WWWQFMAAC.aac
+http://24873.live.streamtheworld.com/WWWQFMAAC.aac
 ```
+
+# Fixing broken link
+Edge VPN plugin - `Planet VPN lite`. Free version, USA works.
+network tab, search `aac` find the digits in the URL 
+like 18093.live.streamtheworld
