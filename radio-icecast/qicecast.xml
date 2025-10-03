@@ -23,15 +23,7 @@
         <port>8000</port>
     </listen-socket>
 
-    <relay>
-        <server>stream1.zipfm.lt</server>
-        <port>80</port>
-        <mount>/zipfm128.mp3</mount>
-        <local-mount>/ziplol</local-mount>
-        <on-demand>1</on-demand>
-    </relay>
-
-<relay>
+ <relay>
     <server>18093.live.streamtheworld.com</server>
     <port>80</port>
     <mount>/WBLSFMAAC.aac</mount>
@@ -40,10 +32,18 @@
 </relay>
 
 <relay>
-    <server>19813.live.streamtheworld.com</server>
+    <server>18183.live.streamtheworld.com</server>
     <port>80</port>
     <mount>/WIYYFMAAC.aac</mount>
     <local-mount>/98rock</local-mount>
+    <on-demand>1</on-demand>
+</relay>
+
+<relay>
+    <server>24873.live.streamtheworld.com</server>
+    <port>80</port>
+    <mount>/WWWQFMAAC.aac</mount>
+    <local-mount>/q997</local-mount>
     <on-demand>1</on-demand>
 </relay>
 
