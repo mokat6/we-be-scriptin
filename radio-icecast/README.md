@@ -44,9 +44,12 @@ Audacy network, iHeartRadio network
 https://www.98online.com/
 stream URL:
 // OLD http://19813.live.streamtheworld.com/WIYYFMAAC.aac
-http://18183.live.streamtheworld.com/WIYYFMAAC.aac
-US ip only. 
+// OLD http://18183.live.streamtheworld.com/WIYYFMAAC.aac
+US ip only.
+https://playerservices.streamtheworld.com/api/livestream-redirect/WIYYFMAAC.aac
+works without VPN, amazing
 ```
+
 
 ```
 WBLS
@@ -68,3 +71,5 @@ http://24873.live.streamtheworld.com/WWWQFMAAC.aac
 Edge VPN plugin - `Planet VPN lite`. Free version, USA works.
 network tab, search `aac` find the digits in the URL 
 like 18093.live.streamtheworld
+
+Opened DevTools > sources, ctrl + shift + F, WIYYFMAAC.aac
